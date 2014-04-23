@@ -41,5 +41,10 @@ namespace MassivePixel.ColorMe.WP8.Views
             App.SelectedColor = cvm;
             NavigationService.Navigate(new Uri("/Views/BlinkerPage.xaml", UriKind.Relative));
         }
+
+        private void About_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/YourLastAboutDialog;component/AboutPage.xaml", UriKind.Relative));
+        }
     }
 }

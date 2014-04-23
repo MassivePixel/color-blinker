@@ -28,7 +28,11 @@
                             <DoubleAnimation
                                 Storyboard.TargetName="ColorName"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-                                From="100" To="-50" Duration="0:0:1.5"/>
+                                From="100" To="-50" Duration="0:0:1.5">
+                                <DoubleAnimation.EasingFunction>
+                                    <SineEase EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
                         </Storyboard>
                     </VisualState>
                     <VisualState x:Name="Exiting">
