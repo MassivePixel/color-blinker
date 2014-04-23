@@ -11,14 +11,90 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
+    Tap="ColoredRectangle_Tap"
     shell:SystemTray.IsVisible="False">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Main">
+                <VisualStateGroup.States>
+                    <VisualState x:Name="Entering">
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="InformationGrid"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0" To="1" Duration="0:0:1.5" />
+
+                            <DoubleAnimation
+                                Storyboard.TargetName="ColorName"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+                                From="100" To="-50" Duration="0:0:1.5"/>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Exiting">
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="InformationGrid"
+                                Storyboard.TargetProperty="Opacity"
+                                To="0" Duration="0:0:1.5" />
+
+                            <!-- Manually change Y position since changing state will cleare it -->
+                            <ObjectAnimationUsingKeyFrames 
+                                Storyboard.TargetName="ColorName"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                        Value="-50" />
+                            </ObjectAnimationUsingKeyFrames>
+
+                            <DoubleAnimation
+                                Storyboard.TargetName="ColorName"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                                To="480" Duration="0:0:1">
+                                <DoubleAnimation.EasingFunction>
+                                    <ExponentialEase Exponent="5" EasingMode="EaseInOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup.States>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Rectangle x:Name="ColoredRectangle">
             <Rectangle.Fill>
                 <SolidColorBrush Color="{Binding Color}" />
             </Rectangle.Fill>
         </Rectangle>
+
+        <Grid x:Name="InformationGrid">
+            <TextBlock Text="tap to stop"
+                       Style="{StaticResource PhoneTextNormalStyle}"
+                       HorizontalAlignment="Center"
+                       Margin="0,24,0,0"/>
+            <TextBlock Text="{Binding Name}"
+                   x:Name="ColorName"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   FontFamily="Segoe WP Light"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform />
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Grid>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Opacity="0">
+            <shell:ApplicationBar.Buttons>
+                <shell:ApplicationBarIconButton Text="sms"
+                                                IconUri="/Assets/AppBar/SMS.png"
+                                                Click="Sms_Click" />
+                <shell:ApplicationBarIconButton Text="mail"
+                                                IconUri="/Assets/AppBar/Mail.png"
+                                                Click="Mail_Click" />
+            </shell:ApplicationBar.Buttons>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
