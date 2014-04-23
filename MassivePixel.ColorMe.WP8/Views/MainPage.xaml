@@ -11,9 +11,56 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    d:DataContext="{d:DesignData ../SampleData/MainViewModelSampleData.xaml}"
     shell:SystemTray.IsVisible="False">
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="StretchedListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Common">
+                <VisualStateGroup.States>
+                    <VisualState x:Name="ShowingHelp1" />
+                    <VisualState x:Name="Hiding">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Help1"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="0" Duration="0:0:2.5"/>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup.States>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ListBox ItemsSource="{Binding Colors}" ItemContainerStyle="{StaticResource StretchedListBoxItemStyle}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle HorizontalAlignment="Stretch"
+                               Height="100">
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="{Binding Color}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid x:Name="Help1">
+            <TextBlock Text="tap to select color"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource PhoneTextExtraLargeStyle}"
+                       Foreground="White"
+                       FontFamily="Segoe WP Light"/>
+        </Grid>
+
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
 
