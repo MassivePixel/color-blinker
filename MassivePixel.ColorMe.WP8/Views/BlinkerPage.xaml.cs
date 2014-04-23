@@ -22,6 +22,12 @@ namespace MassivePixel.ColorMe.WP8.Views
             _timer = new Timer(OnTimer, null, TimeSpan.FromMilliseconds(Interval), TimeSpan.FromMilliseconds(Interval));
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            _timer.Dispose();
+        }
+
         private void OnTimer(object state)
         {
             Dispatcher.BeginInvoke(() =>

@@ -45,7 +45,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Rectangle HorizontalAlignment="Stretch"
-                               Height="100">
+                               Height="136">
                         <Rectangle.Fill>
                             <SolidColorBrush Color="{Binding Color}" />
                         </Rectangle.Fill>
