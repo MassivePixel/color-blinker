@@ -6,11 +6,11 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Color Me!")]
+[assembly: AssemblyTitle("Color Blinker")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Massive Pixel j.d.o.o.")]
-[assembly: AssemblyProduct("ColorMe for Windows Phone 8")]
+[assembly: AssemblyProduct("Color Blinker for Windows Phone 8")]
 [assembly: AssemblyCopyright("Copyright © Massive Pixel 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
