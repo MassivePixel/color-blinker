@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using MassivePixel.ColorMe.WP8.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MassivePixel.ColorMe.WP8.Resources;
 
 namespace MassivePixel.ColorMe.WP8
 {
-    public partial class App : Application
+    public partial class App
     {
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+
+        public static ColorViewModel SelectedColor { get; set; }
 
         /// <summary>
         /// Constructor for the Application object.

@@ -39,7 +39,9 @@
                 </VisualStateGroup.States>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <ListBox ItemsSource="{Binding Colors}" ItemContainerStyle="{StaticResource StretchedListBoxItemStyle}">
+        <ListBox ItemsSource="{Binding Colors}"
+                 ItemContainerStyle="{StaticResource StretchedListBoxItemStyle}"
+                 Tap="Colors_Tap">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Rectangle HorizontalAlignment="Stretch"
