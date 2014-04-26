@@ -45,15 +45,33 @@
         <Link NavigateUri="mailto:info@massivepixel.hr"
               Content="info@massivepixel.hr"
               Label="Support:" />
+        <Link NavigateUri="https://github.com/MassivePixel/color-blinker"
+              Content="github/MassivePixel/color-blinker"
+              Label="Source:" />
       </Links>
     </MainItem>
     <!-- For each additional pivot item, add a separate Item entry. Ideas for items are: license, tutorial or help, version history, show room for other apps from you etc. -->
     <!-- The Title attribute defines the title of the pivot item -->
     <!-- Each Item can be a remote item (fetched from a Uri) or a local item (using its content), or both (local content is the fallback value if fetching the network content fails) -->
     <!-- Supported types are "text" and "xaml", where text is nicely formatted automatically, and XAML is handled by the built-in XamlReader -->
+    <Item Title="thanks" Type="text">
+      Get the source
+      The source code for this application is published under Apache v2 license.
+      Download it at https://github.com/MassivePixel/color-blinker.
+
+      YLAD
+      Your Last About Dialog (the very same page you are looking at) is a simple and awesome library to create about page for your app.
+    </Item>
     <Item Title="history"
           Type="text">
-      1.0.0.0
+      1.0.1
+      This release includes the following changes:
+      - applying open source license
+      - published on GitHub
+      - code cleanup
+      - adding thanks section in the about page
+
+      1.0.0
       The initial version with support for all accent colors.
     </Item>
   </Items>
