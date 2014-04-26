@@ -26,6 +26,21 @@ See the License for the specific language governing permissions and
     mc:Ignorable="d"
     Tap="ColoredRectangle_Tap"
     shell:SystemTray.IsVisible="False">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="Oscillate">
+            <DoubleAnimation Storyboard.TargetName="ColoredRectangle"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.175"
+                             AutoReverse="True"
+                             RepeatBehavior="Forever">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut"
+                                     Exponent="20" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
 
     <Grid x:Name="LayoutRoot" Background="Transparent" Margin="0,0,0,-1">
         <VisualStateManager.VisualStateGroups>

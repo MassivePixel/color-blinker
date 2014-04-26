@@ -16,6 +16,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using Microsoft.Expression.Interactivity.Core;
 using Microsoft.Phone.Tasks;
@@ -24,8 +25,8 @@ namespace MassivePixel.ColorMe.WP8.Views
 {
     public partial class BlinkerPage
     {
-        private Timer _timer;
-        private const double Interval = 175;
+        private Storyboard _storyboard;
+        private bool _playing;
 
         public BlinkerPage()
         {
@@ -36,18 +37,13 @@ namespace MassivePixel.ColorMe.WP8.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            StartTimer();
+            _storyboard = (Resources["Oscillate"] as Storyboard);
+            _storyboard.Begin();
+            _playing = true;
 
             ExtendedVisualStateManager.GoToState(this, "Entering", true);
             await Task.Delay(TimeSpan.FromSeconds(3));
             ExtendedVisualStateManager.GoToState(this, "Exiting", true);
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            if (_timer != null)
-                _timer.Dispose();
         }
 
         private void OnTimer(object state)
@@ -88,20 +84,12 @@ namespace MassivePixel.ColorMe.WP8.Views
 
         private void ColoredRectangle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            if (_timer != null)
-            {
-                _timer.Dispose();
-                _timer = null;
-            }
+            if (_playing)
+                _storyboard.Pause();
             else
-            {
-                StartTimer();
-            }
-        }
+                _storyboard.Resume();
 
-        private void StartTimer()
-        {
-            _timer = new Timer(OnTimer, null, TimeSpan.FromMilliseconds(Interval), TimeSpan.FromMilliseconds(Interval));
+            _playing = !_playing;
         }
     }
 }
