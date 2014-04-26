@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en" />
-  <App xmlns="" ProductID="{edbb6856-6711-4ab9-9ca4-2ce417759880}" Title="Color Blinker" RuntimeType="Silverlight" Version="1.0.1" Genre="apps.normal" Author="Massive Pixel" Description="Pick a color and make your phone stand out by blinking!" Publisher="Massive Pixel" PublisherID="{7395aa8e-c0ad-45f1-b382-442f428d7692}">
+  <App xmlns="" ProductID="{edbb6856-6711-4ab9-9ca4-2ce417759880}" Title="Color Blinker" RuntimeType="Silverlight" Version="1.0.2" Genre="apps.normal" Author="Massive Pixel" Description="Pick a color and make your phone stand out by blinking!" Publisher="Massive Pixel" PublisherID="{7395aa8e-c0ad-45f1-b382-442f428d7692}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
     </Capabilities>
