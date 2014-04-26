@@ -64,6 +64,9 @@
     </Item>
     <Item Title="history"
           Type="text">
+      1.0.2
+      - screen stays on while blinking
+      
       1.0.1
       This release includes the following changes:
       - applying open source license

@@ -12,14 +12,13 @@
 // See the License for the specific language governing permissions and
 //    limitations under the License. 
 
+using Microsoft.Expression.Interactivity.Core;
+using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using Microsoft.Expression.Interactivity.Core;
-using Microsoft.Phone.Tasks;
 
 namespace MassivePixel.ColorMe.WP8.Views
 {
@@ -37,6 +36,10 @@ namespace MassivePixel.ColorMe.WP8.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            // ensure that the screen won't turn off
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+            
             _storyboard = (Resources["Oscillate"] as Storyboard);
             _storyboard.Begin();
             _playing = true;
@@ -46,14 +49,12 @@ namespace MassivePixel.ColorMe.WP8.Views
             ExtendedVisualStateManager.GoToState(this, "Exiting", true);
         }
 
-        private void OnTimer(object state)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            Dispatcher.BeginInvoke(() =>
-            {
-                ColoredRectangle.Visibility = ColoredRectangle.Visibility != Visibility.Visible
-                    ? Visibility.Visible
-                    : Visibility.Collapsed;
-            });
+            base.OnNavigatedFrom(e);
+
+            // ensure that screen turns off once we leave
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
         }
 
         private void Sms_Click(object sender, EventArgs e)
