@@ -84,12 +84,25 @@ namespace MassivePixel.ColorMe.WP8
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            if (!e.IsApplicationInstancePreserved)
+            {
+                if (PhoneApplicationService.Current.State.ContainsKey("SelectedColor"))
+                {
+                    SelectedColor = new ColorViewModel
+                    {
+                        Color = ((Color) PhoneApplicationService.Current.State["SelectedColor"]),
+                        Name = (String) PhoneApplicationService.Current.State["SelectedColorName"]
+                    };
+                }
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            PhoneApplicationService.Current.State["SelectedColor"] = SelectedColor.Color;
+            PhoneApplicationService.Current.State["SelectedColorName"] = SelectedColor.Name;
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
