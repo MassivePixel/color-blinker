@@ -46,7 +46,8 @@ namespace MassivePixel.ColorMe.WP8.Views
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            _timer.Dispose();
+            if (_timer != null)
+                _timer.Dispose();
         }
 
         private void OnTimer(object state)

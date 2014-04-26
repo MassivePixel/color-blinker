@@ -71,6 +71,7 @@
       - code cleanup
       - adding thanks section in the about page
       - fixing the white theme style
+      - fixing crashing issue when timer stops
 
       1.0.0
       The initial version with support for all accent colors.
