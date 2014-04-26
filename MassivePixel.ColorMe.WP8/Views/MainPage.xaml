@@ -19,6 +19,7 @@ See the License for the specific language governing permissions and
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:RateMyApp.Controls;assembly=RateMyApp"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -26,6 +27,7 @@ See the License for the specific language governing permissions and
     SupportedOrientations="Portrait" Orientation="Portrait"
     d:DataContext="{d:DesignData ../SampleData/MainViewModelSampleData.xaml}"
     shell:SystemTray.IsVisible="False">
+
     <phone:PhoneApplicationPage.Resources>
         <Style x:Key="StretchedListBoxItemStyle" TargetType="ListBoxItem">
             <Setter Property="Background" Value="Transparent"/>
@@ -39,6 +41,7 @@ See the License for the specific language governing permissions and
 
     <Grid x:Name="LayoutRoot" Background="Transparent"
           Margin="0,0,0,-1">
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="Common">
                 <VisualStateGroup.States>
@@ -53,6 +56,7 @@ See the License for the specific language governing permissions and
                 </VisualStateGroup.States>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        
         <ListBox ItemsSource="{Binding Colors}"
                  ItemContainerStyle="{StaticResource StretchedListBoxItemStyle}"
                  Tap="Colors_Tap">
@@ -67,6 +71,14 @@ See the License for the specific language governing permissions and
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <!-- Feedback overlay -->
+        <controls:FeedbackOverlay x:Name="FeedbackOverlay"
+                                  FeedbackTo="info@massivepixel.hr"
+                                  ApplicationName="Color Blinker"
+                                  FirstCount="2"
+                                  SecondCount="7"
+                                  CompanyName="Massive Pixel"/>
 
         <Grid x:Name="Help1">
             <TextBlock Text="tap to select color"
