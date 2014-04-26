@@ -16,6 +16,7 @@ using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using MassivePixel.ColorMe.WP8.ViewModels;
 using Microsoft.Phone.Controls;
@@ -130,7 +131,10 @@ namespace MassivePixel.ColorMe.WP8
 
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
-            RootFrame = new PhoneApplicationFrame();
+            RootFrame = new PhoneApplicationFrame
+            {
+                Background = new SolidColorBrush(Colors.Black)
+            };
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
             // Handle navigation failures

@@ -70,6 +70,7 @@
       - published on GitHub
       - code cleanup
       - adding thanks section in the about page
+      - fixing the white theme style
 
       1.0.0
       The initial version with support for all accent colors.

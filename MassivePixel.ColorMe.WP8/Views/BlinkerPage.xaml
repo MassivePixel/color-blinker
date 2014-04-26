@@ -27,7 +27,7 @@ See the License for the specific language governing permissions and
     Tap="ColoredRectangle_Tap"
     shell:SystemTray.IsVisible="False">
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Margin="0,0,0,-1">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="Main">
                 <VisualStateGroup.States>
@@ -87,13 +87,15 @@ See the License for the specific language governing permissions and
             <TextBlock Text="tap to stop"
                        Style="{StaticResource PhoneTextNormalStyle}"
                        HorizontalAlignment="Center"
+                       Foreground="White"
                        Margin="0,24,0,0"/>
             <TextBlock Text="{Binding Name}"
-                   x:Name="ColorName"
-                   Style="{StaticResource PhoneTextExtraLargeStyle}"
-                   FontFamily="Segoe WP Light"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center" >
+                       x:Name="ColorName"
+                       Style="{StaticResource PhoneTextExtraLargeStyle}"
+                       Foreground="White"
+                       FontFamily="Segoe WP Light"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" >
                 <TextBlock.RenderTransform>
                     <CompositeTransform />
                 </TextBlock.RenderTransform>
@@ -102,7 +104,7 @@ See the License for the specific language governing permissions and
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Opacity="0">
+        <shell:ApplicationBar Opacity="0" ForegroundColor="White">
             <shell:ApplicationBar.Buttons>
                 <shell:ApplicationBarIconButton Text="sms"
                                                 IconUri="/Assets/AppBar/SMS.png"

@@ -37,7 +37,8 @@ See the License for the specific language governing permissions and
         </Style>
     </phone:PhoneApplicationPage.Resources>
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent"
+          Margin="0,0,0,-1">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="Common">
                 <VisualStateGroup.States>
@@ -80,7 +81,9 @@ See the License for the specific language governing permissions and
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Minimized">
+        <shell:ApplicationBar Mode="Minimized"
+                              BackgroundColor="Black"
+                              ForegroundColor="White">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="about"
                                               Click="About_Click"/>
